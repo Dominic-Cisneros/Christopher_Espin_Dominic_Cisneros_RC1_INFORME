@@ -12,35 +12,35 @@ int main() {
     printf("Ingrese el numero de estudiantes: ");
     scanf("%d", &estudiantes); 
 
-    for(i = 1; i <= estudiantes; i++) { 
+    for(i = 0; i < estudiantes; i++) { 
 
-        printf("\nEstudiante %d\n", i);
+        printf("\nEstudiante %d\n", i + 1);
 
-        for(j = 0; j <= 3; j++) { 
+        for(j = 0; j < 3; j++) { 
 
             printf("Ingrese la nota de la asignatura %d: ", j + 1);
             scanf("%f", &notas[i][j]);
 
             while(notas[i][j] < 0 || notas[i][j] > 10) { 
 
-                printf("Nota invalida. Ingrese nuevamente: ");
+                printf("Nota invalida. Ingrese nuevamente (0-10): ");
                 scanf("%f", &notas[i][j]);
             }
 
-            suma = notas[i][j]; 
+            suma += notas[i][j]; 
         }
 
-        promedio = suma / 2; 
+        promedio = suma / 3; 
 
-        printf("Promedio del estudiante: %d\n", promedio); 
+        printf("Promedio del estudiante: %.2f\n", promedio); 
 
-        if(promedio >= 6);
+        if(promedio >= 6)
         {
             aprobados++;
         }
     }
 
-    printf("\nTotal aprobados: %f", aprobados);
+    printf("\nTotal aprobados: %d\n", aprobados);
 
     return 0;
 }
