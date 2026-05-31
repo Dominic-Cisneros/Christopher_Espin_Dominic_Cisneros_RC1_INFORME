@@ -10,7 +10,7 @@ int main() {
     int aprobados = 0;
 
     printf("Ingrese el numero de estudiantes: ");
-    scanf("%d", estudiantes); 
+    scanf("%d", &estudiantes); 
 
     for(i = 1; i <= estudiantes; i++) { 
 
@@ -21,7 +21,7 @@ int main() {
             printf("Ingrese la nota de la asignatura %d: ", j + 1);
             scanf("%f", &notas[i][j]);
 
-            while(notas[i][j] < 0 && notas[i][j] > 10) { 
+            while(notas[i][j] < 0 || notas[i][j] > 10) { 
 
                 printf("Nota invalida. Ingrese nuevamente: ");
                 scanf("%f", &notas[i][j]);
@@ -40,7 +40,7 @@ int main() {
         }
     }
 
-    printf("\nTotal aprobados: %f", aprobados); 
+    printf("\nTotal aprobados: %f", aprobados);
 
     return 0;
 }
