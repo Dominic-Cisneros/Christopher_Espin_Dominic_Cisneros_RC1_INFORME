@@ -4,10 +4,8 @@ int main() {
 
     int estudiantes;
     float notas[100][3];
-    float promedio;
-    float suma = 0;
+    float promedio, suma;
     int i, j;
-    int aprobados = 0;
     float maxEst, minEst;
     float maxAsig, minAsig;
 
@@ -50,21 +48,18 @@ int main() {
         printf("Nota maxima del estudiante: %.2f\n", maxEst);
         printf("Nota minima del estudiante: %.2f\n", minEst);
 
-        if(promedio >= 6)
-        {
-            aprobados++;
-        }
     }
     printf("\n---Resultados por asignatura---\n");
     for(j = 0; j < 3; j++) { 
 
-        float sumaAsig = 0;
+        suma = 0;
         maxAsig = notas[0][j];
         minAsig = notas[0][j];
+        int aprobados = 0, reprobados = 0;
 
         for(i = 0; i < estudiantes; i++) { 
 
-            sumaAsig += notas[i][j];
+            suma += notas[i][j];
 
             if(notas[i][j] > maxAsig) {
                 maxAsig = notas[i][j];
@@ -72,12 +67,21 @@ int main() {
 
             if(notas[i][j] < minAsig) {
                 minAsig = notas[i][j];
+            if(notas[i][j] >= 6) {
+                aprobados++;
+            } else {
+                reprobados++;    
             }
         }
 
-        printf("Asignatura %d - Promedio: %.2f, Max: %.2f, Min: %.2f\n", j + 1, sumaAsig / estudiantes, maxAsig, minAsig);
+        float promedioAsig = suma / estudiantes;
+        printf("Asignatura %d:\n", j + 1);
+        printf("Promedio: %.2f\n", promedioAsig);
+        printf("Nota maxima: %.2f\n", maxAsig);
+        printf("Nota minima: %.2f\n", minAsig);
+        printf("Aprobados: %d\n", aprobados);
+        printf("Reprobados: %d\n", reprobados);
     }
-    printf("\nTotal aprobados: %d\n", aprobados);
-
+    
     return 0;
 }
